@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "crypto-js": "^4.1.1",
+    "nodemon": "^2.0.18"
+  }
+}
