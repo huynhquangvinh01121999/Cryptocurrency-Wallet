@@ -13,16 +13,16 @@ class Block {
   calculateHash() {
     return hash(
       this.index +
-        this.prevHash +
-        JSON.stringify(this.transactions) +
-        this.timestamp +
-        this.mineVar
+      this.prevHash +
+      JSON.stringify(this.transactions) +
+      this.timestamp +
+      this.mineVar
     ).toString();
   }
 
   mine(difficuty) {
     while (!this.hash.startsWith("0000".repeat(difficuty))) {
-      //console.log(this.mineVar);
+      // console.log(this.mineVar);
       this.mineVar++;
       this.hash = this.calculateHash();
     }
