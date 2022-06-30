@@ -13,52 +13,6 @@
   <br />
 </p>
 
-# Table of Contents
-
-1. [Blockchain Learning Resources](https://github.com/mikeroyal/Blockchain-Guide#blockchain-learning-resources)
-
-   - [Bitcoin/Lightning Network Resources](https://github.com/mikeroyal/Blockchain-Guide#bitcoinlightning-network-resources)
-
-   - [Courses](https://github.com/mikeroyal/Blockchain-Guide#courses)
-
-   - [Books](https://github.com/mikeroyal/Blockchain-Guide#books)
-
-2. [Blockchain Tools,Libraries and Frameworks](https://github.com/mikeroyal/Blockchain-Guide#blockchain-tools-libraries-and-frameworks)
-
-   - [Blockchain Distribution](https://github.com/mikeroyal/Blockchain-Guide#blockchain-distribution)
-
-   - [Lightning Network](https://github.com/mikeroyal/Blockchain-Guide#lightning-network)
-
-   - [Platforms](https://github.com/mikeroyal/Blockchain-Guide#platforms)
-
-   - [Utilities](https://github.com/mikeroyal/Blockchain-Guide#utilities)
-
-   - [Blockchain Explorers](https://github.com/mikeroyal/Blockchain-Guide#blockchain-explorers)
-
-   - [Blockchain Assets](https://github.com/mikeroyal/Blockchain-Guide#blockchain-assets)
-
-   - [Blockchain Playgrounds](https://github.com/mikeroyal/Blockchain-Guide#blockchain-playgrounds)
-
-3. [C/C++ Development](https://github.com/mikeroyal/Blockchain-Guide#cc-development)
-
-4. [Java Development](https://github.com/mikeroyal/Blockchain-Guide#java-development)
-
-5. [Go Development](https://github.com/mikeroyal/Blockchain-Guide#go-development)
-
-6. [Python Development](https://github.com/mikeroyal/Blockchain-Guide#python-development)
-
-7. [JavaScript/TypeScript Development](https://github.com/mikeroyal/Blockchain-Guide#javascripttypescript-development)
-
-8. [C# Development](https://github.com/mikeroyal/Blockchain-Guide#c-development)
-
-9. [Ruby Development](https://github.com/mikeroyal/Blockchain-Guide#ruby-development)
-
-10. [PHP Development](https://github.com/mikeroyal/Blockchain-Guide#php-development)
-
-11. [Rust Development](https://github.com/mikeroyal/Blockchain-Guide#rust-development)
-
-12. [Erlang Development](https://github.com/mikeroyal/Blockchain-Guide#erlang-development)
-
 # Blockchain Learning Resources
 
 [Back to the Top](https://github.com/mikeroyal/Blockchain-Guide#table-of-contents)
