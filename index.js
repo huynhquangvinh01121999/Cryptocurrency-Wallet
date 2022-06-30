@@ -1,21 +1,19 @@
 const fs = require("fs");
 const BlockChain = require("./src/BlockChain/BlockChain");
-const Transaction = require("./src/Transactions/Transactions");
+const Wallet = require("./src/Wallet/Wallet");
 
 var data = JSON.parse(
   fs.readFileSync("./src/Transactions/transactions.json", "utf8")
 );
 
-const blockChain = new BlockChain(1);
+const myWallet = new Wallet(2);
 data.transactions.map((trans) => {
-  blockChain.addToBlockChain(
-    new Transaction(trans.sender, trans.receiver, trans.amount, trans.gasFee)
-  );
+  myWallet.sendMoney(trans)
 });
 
-// console.log(blockChain.chains);
-// console.log(blockChain.isValid());
-// console.log(JSON.stringify(blockChain.chains, null, 2));
+//console.log(BlockChain.instance);
+console.log(BlockChain.instance.isValid());
+console.log(JSON.stringify(BlockChain.instance.chains, null, 2));
 
 // blockChain.chains[1].data = {
 //   fromAddress: "0000xxVinh",
@@ -38,7 +36,36 @@ data.transactions.map((trans) => {
  * => 1 USD = 1/1207.73     = 0.0009730182 ETH
  */
 
-var keypair = require("keypair");
 
-var pair = keypair();
-console.log(pair.public);
+/*
+const { JSEncrypt } = require('js-encrypt')
+const crypto = require('crypto');
+
+const { privateKey, publicKey } = crypto.generateKeyPairSync('rsa', {
+  modulusLength: 2048,
+  publicKeyEncoding: {
+    type: 'spki',
+    format: 'pem'
+  },
+  privateKeyEncoding: {
+    type: 'pkcs8',
+    format: 'pem'
+  }
+});
+
+// mã hóa
+var ciphertext = crypto.publicEncrypt(
+  {
+    key: publicKey,
+    padding: crypto.constants.RSA_PKCS1_PADDING
+  },
+  Buffer.from('Hello word', 'utf8')
+)
+console.log(ciphertext.toString('base64'))
+
+// giải mã
+var decrypt = new JSEncrypt()
+decrypt.setPrivateKey(privateKey)
+var decrypted = decrypt.decrypt(ciphertext.toString('base64'))
+console.log(decrypted) 
+*/
