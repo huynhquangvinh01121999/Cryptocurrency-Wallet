@@ -15,7 +15,11 @@ class BlockChain {
     if (lastBlock === undefined) {
       this.chains.push(new Block(1, "0000", "Initialized Transaction"));
     } else {
-      const newBlock = new Block(this.chains.length + 1, lastBlock.hash, transaction);
+      const newBlock = new Block(
+        this.chains.length + 1,
+        lastBlock.hash,
+        transaction
+      );
       newBlock.mine(this.difficuty);
       this.chains.push(newBlock);
     }

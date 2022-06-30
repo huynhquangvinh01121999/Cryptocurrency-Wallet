@@ -12,7 +12,11 @@ class Block {
 
   calculateHash() {
     return hash(
-      this.index + this.prevHash + JSON.stringify(this.transactions) + this.timestamp + this.mineVar
+      this.index +
+        this.prevHash +
+        JSON.stringify(this.transactions) +
+        this.timestamp +
+        this.mineVar
     ).toString();
   }
 
