@@ -13,7 +13,6 @@
     "crypto": "^1.0.1",
     "crypto-js": "^4.1.1",
     "js-encrypt": "^2.3.4",
-    "keypair": "^1.0.4",
     "nodemon": "^2.0.18"
   }
 }

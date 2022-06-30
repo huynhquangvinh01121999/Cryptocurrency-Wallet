@@ -17,6 +17,8 @@ class BlockChain {
     if (lastBlock === undefined) {
       this.chains.push(new Block(1, "0000", "Initialized Transaction"));
     } else {
+
+      // chứng thực chữ ký số bằng khóa công khai
       const verifier = crypto.createVerify("SHA256");
       verifier.update(transaction.toString());
 
