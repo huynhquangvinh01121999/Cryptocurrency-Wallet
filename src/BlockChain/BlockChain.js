@@ -1,11 +1,16 @@
 const Block = require("./Block");
-const crypto = require('crypto');
+const crypto = require("crypto");
 
 class BlockChain {
   static instance = new BlockChain();
 
   constructor() {
-    this.chains = [];
+    const generateTheFirstBlock = new Block(
+      1,
+      "0000",
+      "Initialized Transaction"
+    );
+    this.chains = [generateTheFirstBlock];
   }
 
   getLastBlock() {
@@ -14,24 +19,20 @@ class BlockChain {
 
   addToBlockChain(transaction, publicKey, signature, difficuty) {
     const lastBlock = this.getLastBlock();
-    if (lastBlock === undefined) {
-      this.chains.push(new Block(1, "0000", "Initialized Transaction"));
-    } else {
 
-      // chứng thực chữ ký số bằng khóa công khai
-      const verifier = crypto.createVerify("SHA256");
-      verifier.update(transaction.toString());
+    // chứng thực chữ ký số bằng khóa công khai
+    const verifier = crypto.createVerify("SHA256");
+    verifier.update(transaction.toString());
 
-      const isValid = verifier.verify(publicKey, signature)
-      if (isValid) {
-        const newBlock = new Block(
-          this.chains.length + 1,
-          lastBlock.hash,
-          transaction
-        );
-        newBlock.mine(difficuty);
-        this.chains.push(newBlock);
-      }
+    const isValid = verifier.verify(publicKey, signature);
+    if (isValid) {
+      const newBlock = new Block(
+        this.chains.length + 1,
+        lastBlock.hash,
+        transaction
+      );
+      newBlock.mine(difficuty);
+      this.chains.push(newBlock);
     }
   }
 

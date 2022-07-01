@@ -6,9 +6,9 @@ var data = JSON.parse(
   fs.readFileSync("./src/Transactions/transactions.json", "utf8")
 );
 
-const myWallet = new Wallet(2);
+const myWallet = new Wallet(1);
 data.transactions.map((trans) => {
-  myWallet.sendMoney(trans)
+  myWallet.sendMoney(trans);
 });
 
 //console.log(BlockChain.instance);
@@ -35,7 +35,6 @@ console.log(JSON.stringify(BlockChain.instance.chains, null, 2));
  * => 1 ETH = 1 * 1207.73   = $1207.73
  * => 1 USD = 1/1207.73     = 0.0009730182 ETH
  */
-
 
 /*
 const { JSEncrypt } = require('js-encrypt')
