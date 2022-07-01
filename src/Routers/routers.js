@@ -1,10 +1,6 @@
 const fs = require("fs");
-const BlockChain = require("./src/BlockChain/BlockChain");
-const Wallet = require("./src/Wallet/Wallet");
-
-var data = JSON.parse(
-  fs.readFileSync("./src/Transactions/transactions.json", "utf8")
-);
+const BlockChain = require("../BlockChain/BlockChain");
+const Wallet = require("../Wallet/Wallet");
 
 module.exports = (app) => {
   // define the home page route
@@ -14,10 +10,13 @@ module.exports = (app) => {
   });
 
   app.get("/wallets", (req, res) => {
-    // const myWallet = new Wallet(1);
-    // data.transactions.map((trans) => {
-    //   myWallet.sendMoney(trans);
-    // });
+    /*var data = JSON.parse(
+      fs.readFileSync("../Transactions/transactions.json", "utf8")
+    );
+    const myWallet = new Wallet(1);
+    data.transactions.map((trans) => {
+      myWallet.sendMoney(trans);
+    });*/
 
     return res
       .status(200)
@@ -41,7 +40,7 @@ module.exports = (app) => {
       });
       return res
         .status(201)
-        .json({ status: 200, message: "OK", data: BlockChain.instance });
+        .json({ status: 200, message: "OK", data: BlockChain.instance.getLastBlock() });
     } else {
       return res
         .status(400)
