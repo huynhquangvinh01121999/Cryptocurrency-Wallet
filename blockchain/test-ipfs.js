@@ -3,11 +3,11 @@ const data = 'hello world!'
 Hash.of(data).then(res => console.log(res))
 
 const CID = require('cids')
-const cid = new CID('QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o')
+const cid = new CID('QmTp2hEo8eXRp6wg7jXv1BLCMh5a4F3B7buAUZNZUu772j')
 console.log(CID.isCID(cid));
 
 /**
  * tham khảo ipfs tại đây:
  * https://viblo.asia/p/nhung-goc-nhin-dau-tien-ve-ipfs-Az45b9PwlxY
  * 
- * */
+ **/
