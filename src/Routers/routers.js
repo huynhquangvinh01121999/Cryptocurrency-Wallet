@@ -3,12 +3,29 @@ const BlockChain = require("../BlockChain/BlockChain");
 const Wallet = require("../Wallet/Wallet");
 
 module.exports = (app) => {
-  // define the home page route
+  /**
+   * @swagger
+   * /:
+   *    get:
+   *      description: Home page
+   *      responses:
+   *        200:
+   *          description: Success
+   */
   app.get("/", (req, res) => {
     res.send(new Date());
     // res.send(new Date().getSeconds().toString());
   });
 
+  /**
+   * @swagger
+   * /wallets:
+   *    get:
+   *      description: Wallets
+   *      responses:
+   *        200:
+   *          description: Success
+   */
   app.get("/wallets", (req, res) => {
     /*var data = JSON.parse(
       fs.readFileSync("../Transactions/transactions.json", "utf8")
@@ -23,6 +40,26 @@ module.exports = (app) => {
       .json({ status: 200, message: "OK", data: BlockChain.instance });
   });
 
+  /**
+   * @swagger
+   * /sendTransaction:
+   *    post:
+   *      description: Home page
+   *      parameters:
+   *      - name: sender
+   *        description: sender of transaction
+   *        in: formData
+   *        required: true
+   *        type: String
+   *      - name: receiver
+   *        description: receiver of transaction
+   *        in: formData
+   *        required: true
+   *        type: String
+   *      responses:
+   *        201:
+   *          description: Success
+   */
   app.post("/sendTransaction", (req, res) => {
     const myWallet = new Wallet(1);
 
@@ -38,9 +75,11 @@ module.exports = (app) => {
         amount: req.body.amount,
         gasFee: req.body.gasFee,
       });
-      return res
-        .status(201)
-        .json({ status: 200, message: "OK", data: BlockChain.instance.getLastBlock() });
+      return res.status(201).json({
+        status: 201,
+        message: "OK",
+        data: BlockChain.instance.getLastBlock(),
+      });
     } else {
       return res
         .status(400)
@@ -48,6 +87,15 @@ module.exports = (app) => {
     }
   });
 
+  /**
+   * @swagger
+   * /isValid:
+   *    get:
+   *      description: Check valid blockchain
+   *      responses:
+   *        200:
+   *          description: Success
+   */
   app.get("/isValid", (req, res) => {
     return res.status(201).json({
       status: 200,
