@@ -17,6 +17,8 @@
     "express": "^4.18.1",
     "js-encrypt": "^2.3.4",
     "nodemon": "^2.0.18",
-    "pure-ipfs-only-hash": "^4.0.2"
+    "pure-ipfs-only-hash": "^4.0.2",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.4.0"
   }
 }
