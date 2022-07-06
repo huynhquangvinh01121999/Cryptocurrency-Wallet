@@ -17,6 +17,10 @@ class BlockChain {
     return this.chains[this.chains.length - 1];
   }
 
+  loadDefaultChians(data) {
+    this.chains = data;
+  }
+
   addToBlockChain(transaction, publicKey, signature, difficuty) {
     const lastBlock = this.getLastBlock();
 
@@ -40,6 +44,8 @@ class BlockChain {
     for (let i = 1; i < this.chains.length; i++) {
       const currentBlock = this.chains[i];
       const prevBlock = this.chains[i - 1];
+
+      console.log(currentBlock.calculateHash());
 
       if (currentBlock.hash != currentBlock.calculateHash()) {
         return false;

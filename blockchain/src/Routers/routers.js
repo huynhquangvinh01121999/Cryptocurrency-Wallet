@@ -1,6 +1,7 @@
 const fs = require("fs");
 const BlockChain = require("../BlockChain/BlockChain");
 const Wallet = require("../Wallet/Wallet");
+const defaultTransaction = require("../Transactions/transactions.json")
 
 module.exports = (app) => {
   /**
@@ -13,7 +14,13 @@ module.exports = (app) => {
    *          description: Success
    */
   app.get("/", (req, res) => {
-    res.send(new Date());
+    const myWallet = new Wallet(1);
+    defaultTransaction.transactions.map((transaction) => {
+      myWallet.sendMoney(transaction);
+    });
+    return res
+      .status(200)
+      .json({ status: 200, message: "OK", data: BlockChain.instance });
     // res.send(new Date().getSeconds().toString());
   });
 
@@ -27,14 +34,6 @@ module.exports = (app) => {
    *          description: Success
    */
   app.get("/wallets", (req, res) => {
-    /*var data = JSON.parse(
-      fs.readFileSync("../Transactions/transactions.json", "utf8")
-    );
-    const myWallet = new Wallet(1);
-    data.transactions.map((trans) => {
-      myWallet.sendMoney(trans);
-    });*/
-
     return res
       .status(200)
       .json({ status: 200, message: "OK", data: BlockChain.instance });
@@ -46,14 +45,9 @@ module.exports = (app) => {
    *    post:
    *      description: Home page
    *      parameters:
-   *      - name: sender
-   *        description: sender of transaction
-   *        in: formData
-   *        required: true
-   *        type: String
-   *      - name: receiver
-   *        description: receiver of transaction
-   *        in: formData
+   *      - name: request body
+   *        description: request body of transaction
+   *        in: body
    *        required: true
    *        type: String
    *      responses:
