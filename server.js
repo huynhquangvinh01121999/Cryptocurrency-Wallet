@@ -3,7 +3,14 @@ const bodyParser = require("body-parser");
 const routers = require("./src/Routers/routers");
 
 const app = express();
-const server = require("http").createServer(app);
+
+// Add swagger
+const swaggerUi = require("swagger-ui-express");
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerOptions = require("./swagger");
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use("/swagger-ui", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(bodyParser.json({ limit: "50mb" }));
@@ -22,6 +29,6 @@ app.use(function (req, res, next) {
 routers(app);
 
 const PORT = process.env.PORT || 3030;
-server.listen(PORT, () => {
-  console.log(`Server is running on: http://localhost:${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on: http://localhost:${PORT}/swagger-ui`);
 });
