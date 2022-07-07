@@ -1,7 +1,7 @@
-'use strict'
+"use strict";
 
-const parallelBatch = require('it-parallel-batch')
-const defaultOptions = require('./options')
+const parallelBatch = require("../../it-parallel-batch");
+const defaultOptions = require("./options");
 
 /**
  * @typedef {import('interface-blockstore').Blockstore} Blockstore
@@ -26,46 +26,53 @@ const defaultOptions = require('./options')
  * @param {Blockstore} blockstore
  * @param {UserImporterOptions} options
  */
-async function * importer (source, blockstore, options = {}) {
-  const opts = defaultOptions(options)
+async function* importer(source, blockstore, options = {}) {
+  const opts = defaultOptions(options);
 
-  let dagBuilder
+  let dagBuilder;
 
-  if (typeof options.dagBuilder === 'function') {
-    dagBuilder = options.dagBuilder
+  if (typeof options.dagBuilder === "function") {
+    dagBuilder = options.dagBuilder;
   } else {
-    dagBuilder = require('./dag-builder')
+    dagBuilder = require("./dag-builder");
   }
 
-  let treeBuilder
+  let treeBuilder;
 
-  if (typeof options.treeBuilder === 'function') {
-    treeBuilder = options.treeBuilder
+  if (typeof options.treeBuilder === "function") {
+    treeBuilder = options.treeBuilder;
   } else {
-    treeBuilder = require('./tree-builder')
+    treeBuilder = require("./tree-builder");
   }
 
   /** @type {AsyncIterable<ImportCandidate> | Iterable<ImportCandidate>} */
-  let candidates
+  let candidates;
 
   if (Symbol.asyncIterator in source || Symbol.iterator in source) {
     // @ts-ignore
-    candidates = source
+    candidates = source;
   } else {
     // @ts-ignore
-    candidates = [source]
+    candidates = [source];
   }
 
-  for await (const entry of treeBuilder(parallelBatch(dagBuilder(candidates, blockstore, opts), opts.fileImportConcurrency), blockstore, opts)) {
+  for await (const entry of treeBuilder(
+    parallelBatch(
+      dagBuilder(candidates, blockstore, opts),
+      opts.fileImportConcurrency
+    ),
+    blockstore,
+    opts
+  )) {
     yield {
       cid: entry.cid,
       path: entry.path,
       unixfs: entry.unixfs,
-      size: entry.size
-    }
+      size: entry.size,
+    };
   }
 }
 
 module.exports = {
-  importer
-}
+  importer,
+};
