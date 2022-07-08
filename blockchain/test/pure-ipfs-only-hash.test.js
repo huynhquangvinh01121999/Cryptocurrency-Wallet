@@ -1,13 +1,16 @@
-// const fs = require("fs");
+const fs = require("fs");
 const Hash = require("pure-ipfs-only-hash");
 
-// var data = JSON.parse(fs.readFileSync(`${__dirname}/src/Transactions/Transactions.json`, "utf8"))
 let options = {
   warpWithDirectory: false,
   progress: (prog) => console.log(`Saved :${prog}`),
 };
+var data = fs.readFileSync(
+  `${__dirname}/src/Transactions/Transactions.json`,
+  "utf8"
+);
 
-Hash.of("hello word!").then((res) => console.log(res));
+Hash.of("ahuhu").then((res) => console.log(res));
 
 // const CID = require('cids')
 // const cid = new CID('QmTp2hEo8eXRp6wg7jXv1BLCMh5a4F3B7buAUZNZUu772j')

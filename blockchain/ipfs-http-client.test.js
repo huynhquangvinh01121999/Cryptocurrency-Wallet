@@ -19,11 +19,7 @@ async function saveText() {
 async function saveFile() {
   let ipfs = await ipfsClient();
 
-  //   var data = fs.readFileSync(
-  //     `${__dirname}/src/Transactions/Transactions.json`,
-  //     "utf8"
-  //   );
-  let data = fs.readFileSync("./package.json");
+  let data = fs.readFileSync("src/Transactions/Transactions.json", "utf8");
   let options = {
     warpWithDirectory: false,
     progress: (prog) => console.log(`Saved :${prog}`),
@@ -44,5 +40,5 @@ async function getData(hash) {
 }
 
 // saveText();
-// saveFile();
-getData("QmUe4a5wqKQnab1JT2jyyvQvg1nnxcnSaJoMmk9uNZXCkc")
+saveFile();
+// getData("QmUe4a5wqKQnab1JT2jyyvQvg1nnxcnSaJoMmk9uNZXCkc")

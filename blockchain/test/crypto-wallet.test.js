@@ -1,6 +1,6 @@
 const fs = require("fs");
-const BlockChain = require("./src/BlockChain/BlockChain");
-const Wallet = require("./src/Wallet/Wallet");
+const BlockChain = require("../src/BlockChain/BlockChain");
+const Wallet = require("../src/Wallet/Wallet");
 
 var data = JSON.parse(
   fs.readFileSync("./src/Transactions/transactions.json", "utf8")

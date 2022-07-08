@@ -7,7 +7,7 @@ const app = express();
 // Add swagger
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsDoc = require("swagger-jsdoc");
-const swaggerOptions = require("./swagger");
+const swaggerOptions = require("./swagger.setting");
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/swagger-ui", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
